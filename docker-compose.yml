@@ -1,8 +1,23 @@
 version: '3.1'
 
+networks:
+  app:
+
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
+    networks:
+      - app
   db_postgres:
-    image: postgres
+    image: postgres:12
     restart: always
     environment:
       POSTGRES_USER: app
@@ -10,3 +25,5 @@ services:
       POSTGRES_DB: app
     ports:
       - '54322:5432'
+    networks:
+      - app

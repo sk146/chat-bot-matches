@@ -1,14 +1,6 @@
 import { Injectable, Module } from '@nestjs/common';
 import { MatchesRepository } from './matches.repository';
-
-@Injectable()
-export class MatchesService {
-  constructor(private readonly matches: MatchesRepository) {}
-  public async getLastMatches(limit: number) {
-    // TODO: Add number check
-    return this.matches.load(limit);
-  }
-}
+import { MatchesService } from './matches.service';
 
 @Module({
   providers: [MatchesService, MatchesRepository],

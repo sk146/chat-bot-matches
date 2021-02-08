@@ -22,10 +22,11 @@ export class Match {
     if (hint === 'string') {
       const opponents = this.opponents.join(' vs ');
       const watchTime = this.status === MatchStatus.Live ? ' 🔴 ' : this.time;
-      return `${watchTime} ${opponents} ${this.status}`;
+      return `${watchTime} ${opponents}`;
     }
   }
 }
+
 export enum MatchStatus {
   Wait = 'wait',
   Live = 'live',
